@@ -1,29 +1,25 @@
-const int drownPump = 2;
-const int waterPump = 3;
-const int nutriPump = 4;
+const int mPump = 2; //main pump
+const int wPump = 3; // water pump
+const int nPump = 4; // Nutrient pump
 
 void setup() {
-  // put your setup code here, to run once:
-
+  pinMode(mPump, OUTPUT);
+  pinMode(wPump, OUTPUT);
+  pinMode(nPump, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  contrPump(nPump, HIGH, 1000);
+  delay(5000);
 
 }
 
 void drown(int state) {
-  digitalWrite(drownPump, state);
+  digitalWrite(mPump, state);
 }
 
-void water(int state, int amount) {
-  digitalWrite(waterPump, state);
+void contrPump(int pumpNr, int state, int amount) {
+  digitalWrite(pumpNr, state);
   delay(amount);
-  digitalWrite(waterPump, !state);
-}
-
-void nutri(int state, int amount) {
-  digitalWrite(nutriPump, state);
-  delay(amount);
-  digitalWrite(nutriPump, !state);
+  digitalWrite(pumpNr, !state);
 }
